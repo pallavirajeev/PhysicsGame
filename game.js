@@ -69,6 +69,10 @@ class Level1 extends Phaser.Scene {
 
         this.star.setImmovable(true);
         this.star.body.allowGravity = false;
+
+
+        this.textObject = this.add.text(580,440,"tap");
+        this.input.on('pointerdown', () => this.scene.start('level2'));
         
     }
     update() {
@@ -92,7 +96,7 @@ class Level1 extends Phaser.Scene {
 
         }
 
-        if (up.isDown)
+        if (up.isDown && this.player.body.touching.down)
         {
             this.player.setVelocityY(-330);
         }
@@ -110,6 +114,10 @@ class Level2 extends Phaser.Scene {
     preload(){
         this.load.path = './assets/';
         this.load.image('level2', 'level2.png');
+        this.load.image('cat2', 'cat2.png');
+        this.load.image('platform', 'platform.png');
+        this.load.image('grass', 'grass.png');
+        this.load.image('star', 'star.png');
     }
     create() {
         this.imageObject = this.add.image(
@@ -117,6 +125,90 @@ class Level2 extends Phaser.Scene {
             240,//y
             'level2',//imagename
         )
+
+        this.star = this.physics.add.image(
+            590,
+            310,
+            'star'
+        );
+
+        this.star.setScale(2);
+
+        this.player = this.physics.add.sprite(40, 310, 'cat2');
+        this.player.setScale(0.2);
+
+        this.player.setBounce(0.2);
+        this.player.setCollideWorldBounds(true);
+
+        this.platform1 = this.physics.add.image(
+            172,
+            290,
+            'platform',
+        )
+        this.platform1.setScale(0.5);
+
+        this.platform2 = this.physics.add.image(
+            452,
+            290,
+            'platform',
+        )
+        this.platform2.setScale(0.5);
+
+        this.grass = this.physics.add.image(
+            300,
+            350,
+            'grass',
+        )
+        this.grass.setScale(0.5);
+
+        this.cursors = this.input.keyboard.createCursorKeys();
+        this.physics.add.collider(this.player, this.platform1);
+        this.physics.add.collider(this.player, this.platform2);
+        this.physics.add.collider(this.player, this.platform3);
+        this.physics.add.collider(this.player, this.grass);
+
+        this.platform1.setImmovable(true);
+        this.platform1.body.allowGravity = false;
+
+        this.platform2.setImmovable(true);
+        this.platform2.body.allowGravity = false;
+
+        this.grass.setImmovable(true);
+        this.grass.body.allowGravity = false;
+
+        this.star.setImmovable(true);
+        this.star.body.allowGravity = false;
+
+        this.textObject = this.add.text(580,440,"tap");
+        this.input.on('pointerdown', () => this.scene.start('level3'));
+    }
+    update() {
+        const { left, right, up } = this.cursors;
+
+        if (left.isDown)
+        {
+            this.player.setVelocityX(-160);
+
+        }
+        else if (right.isDown)
+        {
+            this.player.setVelocityX(160);
+
+        }
+        else
+        {
+            this.player.setVelocityX(0);
+
+        }
+
+        if (up.isDown && this.player.body.touching.down)
+        {
+            this.player.setVelocityY(-330);
+        }
+
+        this.physics.world.collide(this.player, this.star, function(){
+            game.scene.start('level3');
+            });
     }
 }
 class Level3 extends Phaser.Scene {
@@ -126,6 +218,10 @@ class Level3 extends Phaser.Scene {
     preload(){
         this.load.path = './assets/';
         this.load.image('level3', 'level3.png');
+        this.load.image('cat2', 'cat2.png');
+        this.load.image('platform', 'platform.png');
+        this.load.image('grass', 'grass.png');
+        this.load.image('star', 'star.png');
     }
     create() {
         this.imageObject = this.add.image(
@@ -133,6 +229,97 @@ class Level3 extends Phaser.Scene {
             240,//y
             'level3',//imagename
         )
+        this.star = this.physics.add.image(
+            620,
+            310,
+            'star'
+        );
+
+        this.star.setScale(2);
+
+        this.player = this.physics.add.sprite(30, 310, 'cat2');
+        this.player.setScale(0.2);
+
+        this.player.setBounce(0.2);
+        this.player.setCollideWorldBounds(true);
+
+        this.platform1 = this.physics.add.image(
+            130,
+            290,
+            'platform',
+        )
+        this.platform1.setScale(0.5);
+
+        this.platform2 = this.physics.add.image(
+            325,
+            290,
+            'platform',
+        )
+        this.platform2.setScale(0.5);
+
+        this.platform3 = this.physics.add.image(
+            520,
+            290,
+            'platform',
+        )
+        this.platform3.setScale(0.5);
+
+        this.grass = this.physics.add.image(
+            300,
+            350,
+            'grass',
+        )
+        this.grass.setScale(0.5);
+
+        this.cursors = this.input.keyboard.createCursorKeys();
+        this.physics.add.collider(this.player, this.platform1);
+        this.physics.add.collider(this.player, this.platform2);
+        this.physics.add.collider(this.player, this.platform3);
+        this.physics.add.collider(this.player, this.grass);
+
+        this.platform1.setImmovable(true);
+        this.platform1.body.allowGravity = false;
+
+        this.platform2.setImmovable(true);
+        this.platform2.body.allowGravity = false;
+
+        this.platform3.setImmovable(true);
+        this.platform3.body.allowGravity = false;
+
+        this.grass.setImmovable(true);
+        this.grass.body.allowGravity = false;
+
+        this.star.setImmovable(true);
+        this.star.body.allowGravity = false;
+    }
+
+    update() {
+        const { left, right, up } = this.cursors;
+
+        if (left.isDown)
+        {
+            this.player.setVelocityX(-160);
+
+        }
+        else if (right.isDown)
+        {
+            this.player.setVelocityX(160);
+
+        }
+        else
+        {
+            this.player.setVelocityX(0);
+
+        }
+
+        if (up.isDown && this.player.body.touching.down)
+        {
+            this.player.setVelocityY(-330);
+        }
+
+        this.physics.world.collide(this.player, this.star, function(){
+            game.scene.start('level3');
+            });
     }
 }
 class Outro extends Phaser.Scene {
@@ -154,9 +341,9 @@ let config = {
     physics: {
         default: 'arcade',
         arcade: {
-            debug: false,
+            debug: true,
             gravity: {
-                y: 300
+                y: 600
             }
         }
     },
