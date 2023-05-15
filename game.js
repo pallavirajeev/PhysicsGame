@@ -18,6 +18,7 @@ class Level1 extends Phaser.Scene {
         this.load.path = './assets/';
         this.load.image('level1', 'level1.png');
         this.load.image('cat', 'cat.png');
+        this.load.image('platform', 'platform.png');
     }
     create() {
         this.imageObject = this.add.image(
@@ -32,6 +33,13 @@ class Level1 extends Phaser.Scene {
             'cat',
         )
         this.player.setScale(0.2);
+
+        this.platform = this.add.image(
+            320,
+            290,
+            'platform',
+        )
+        this.platform.setScale(0.6);
     }
 }
 class Level2 extends Phaser.Scene {
