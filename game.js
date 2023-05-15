@@ -6,19 +6,86 @@ class Intro extends Phaser.Scene {
 
     }
     create() {
+        this.textObject = this.add.text(580,440,"tap");
+        this.input.on('pointerdown', () => this.scene.start('level1'));
+    }
+}
+class Level1 extends Phaser.Scene {
+    constructor() {
+        super('level1')
+    }
+    preload(){
+        this.load.path = './assets/';
+        this.load.image('level1', 'level1.png');
+    }
+    create() {
+        this.imageObject = this.add.image(
+            320,//x
+            240,//y
+            'level1',//imagename
+        )
+    }
+}
+class Level2 extends Phaser.Scene {
+    constructor() {
+        super('level2')
+    }
+    preload(){
+        this.load.path = './assets/';
+        this.load.image('level2', 'level2.png');
+    }
+    create() {
+        this.imageObject = this.add.image(
+            320,//x
+            240,//y
+            'level2',//imagename
+        )
+    }
+}
+class Level3 extends Phaser.Scene {
+    constructor() {
+        super('level3')
+    }
+    preload(){
+        this.load.path = './assets/';
+        this.load.image('level3', 'level3.png');
+    }
+    create() {
+        this.imageObject = this.add.image(
+            320,//x
+            240,//y
+            'level3',//imagename
+        )
+    }
+}
+class Outro extends Phaser.Scene {
+    constructor() {
+        super('outro')
+    }
+    preload(){
+
+    }
+    create() {
 
     }
 }
 
-
-const game = new Phaser.Game({
-    scale: {
-        mode: Phaser.Scale.FIT,
-        autoCenter: Phaser.Scale.CENTER_BOTH,
-        width: 640,
-        height: 480
+let config = {
+    type: Phaser.WEBGL,
+    width: 640,
+    height: 480,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            debug: false,
+            gravity: {
+                x: 0,
+                y: 0
+            }
+        }
     },
-    scene: [Intro],
-    title: "Physics Game",
-});
+    scene: [Intro, Level1, Level2, Level3, Outro]
+};
+
+let game = new Phaser.Game(config);
 
