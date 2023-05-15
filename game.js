@@ -24,6 +24,7 @@ class Level1 extends Phaser.Scene {
             240,//y
             'level1',//imagename
         )
+        this.star = this.add.text(590,310,"⭐");
     }
 }
 class Level2 extends Phaser.Scene {
