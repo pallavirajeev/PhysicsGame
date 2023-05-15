@@ -379,7 +379,7 @@ class Level3 extends Phaser.Scene {
         }
 
         this.physics.world.collide(this.player, this.star, function(){
-            game.scene.start('level3');
+            game.scene.start('sum3');
             });
     }
 }
