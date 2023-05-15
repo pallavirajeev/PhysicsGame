@@ -17,8 +17,9 @@ class Level1 extends Phaser.Scene {
     preload(){
         this.load.path = './assets/';
         this.load.image('level1', 'level1.png');
-        this.load.image('cat', 'cat.png');
+        this.load.image('cat2', 'cat2.png');
         this.load.image('platform', 'platform.png');
+        this.load.image('grass', 'grass.png');
     }
     create() {
         this.imageObject = this.add.image(
@@ -27,19 +28,76 @@ class Level1 extends Phaser.Scene {
             'level1',//imagename
         )
         this.star = this.add.text(590,310,"⭐");
-        this.player = this.add.image(
-            100,
-            310,
-            'cat',
-        )
+        // this.player = this.add.image(
+        //     100,
+        //     310,
+        //     'cat',
+        // )
+        // this.player.setScale(0.2);
+
+        this.player = this.physics.add.sprite(100, 310, 'cat2');
         this.player.setScale(0.2);
 
-        this.platform = this.add.image(
+        this.player.setBounce(0.2);
+        this.player.setCollideWorldBounds(true);
+
+        this.platform = this.physics.add.image(
             320,
             290,
             'platform',
         )
         this.platform.setScale(0.6);
+
+        this.grass = this.physics.add.image(
+            300,
+            350,
+            'grass',
+        )
+        this.grass.setScale(0.5);
+
+        this.cursors = this.input.keyboard.createCursorKeys();
+        this.physics.add.collider(this.player, this.platform);
+        this.physics.add.collider(this.player, this.grass);
+
+        this.platform.setImmovable(true);
+        this.platform.body.allowGravity = false;
+
+        this.grass.setImmovable(true);
+        this.grass.body.allowGravity = false;
+
+        this.physics.world.collide(this.player, this.star, function(){
+            game.scene.start('level2');
+            });
+
+
+    }
+    update() {
+        const { left, right, up } = this.cursors;
+
+        if (left.isDown)
+        {
+            this.player.setVelocityX(-160);
+
+            //this.player.anims.play('left', true);
+        }
+        else if (right.isDown)
+        {
+            this.player.setVelocityX(160);
+
+            //this.player.anims.play('right', true);
+        }
+        else
+        {
+            this.player.setVelocityX(0);
+
+            //this.player.anims.play('turn');
+        }
+
+        if (up.isDown)
+        {
+            this.player.setVelocityY(-330);
+        }
+
     }
 }
 class Level2 extends Phaser.Scene {
@@ -95,8 +153,7 @@ let config = {
         arcade: {
             debug: false,
             gravity: {
-                x: 0,
-                y: 0
+                y: 300
             }
         }
     },
