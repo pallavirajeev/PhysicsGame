@@ -14,12 +14,14 @@ class Level1 extends Phaser.Scene {
     constructor() {
         super('level1')
     }
+    
     preload(){
         this.load.path = './assets/';
         this.load.image('level1', 'level1.png');
         this.load.image('cat2', 'cat2.png');
         this.load.image('platform', 'platform.png');
         this.load.image('grass', 'grass.png');
+        this.load.image('star', 'star.png');
     }
     create() {
         this.imageObject = this.add.image(
@@ -27,13 +29,13 @@ class Level1 extends Phaser.Scene {
             240,//y
             'level1',//imagename
         )
-        this.star = this.add.text(590,310,"⭐");
-        // this.player = this.add.image(
-        //     100,
-        //     310,
-        //     'cat',
-        // )
-        // this.player.setScale(0.2);
+        this.star = this.physics.add.image(
+            590,
+            310,
+            'star'
+        );
+
+        this.star.setScale(2);
 
         this.player = this.physics.add.sprite(100, 310, 'cat2');
         this.player.setScale(0.2);
@@ -65,38 +67,39 @@ class Level1 extends Phaser.Scene {
         this.grass.setImmovable(true);
         this.grass.body.allowGravity = false;
 
-        this.physics.world.collide(this.player, this.star, function(){
-            game.scene.start('level2');
-            });
-
-
+        this.star.setImmovable(true);
+        this.star.body.allowGravity = false;
+        
     }
     update() {
+
+
         const { left, right, up } = this.cursors;
 
         if (left.isDown)
         {
             this.player.setVelocityX(-160);
 
-            //this.player.anims.play('left', true);
         }
         else if (right.isDown)
         {
             this.player.setVelocityX(160);
 
-            //this.player.anims.play('right', true);
         }
         else
         {
             this.player.setVelocityX(0);
 
-            //this.player.anims.play('turn');
         }
 
         if (up.isDown)
         {
             this.player.setVelocityY(-330);
         }
+
+        this.physics.world.collide(this.player, this.star, function(){
+            game.scene.start('level2');
+            });
 
     }
 }
