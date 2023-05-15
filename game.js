@@ -74,8 +74,8 @@ class Level1 extends Phaser.Scene {
         this.star.body.allowGravity = false;
 
 
-        this.textObject = this.add.text(580,440,"tap");
-        this.input.on('pointerdown', () => this.scene.start('sum1'));
+        // this.textObject = this.add.text(580,440,"tap");
+        // this.input.on('pointerdown', () => this.scene.start('sum1'));
         
     }
     update() {
@@ -119,8 +119,14 @@ class Sum1 extends Phaser.Scene {
         this.load.path = './assets/';
         this.load.image('font1', 'f1.png');
         this.load.image('txt1','sum1txt.png')
+        this.load.image('bckgrnd', 'bckgrnd.png')
     }
     create() {
+        this.b = this.add.image(
+            320,
+            240,
+            'bckgrnd',
+        )
         this.font1 = this.add.image(
             320,
             120,
@@ -133,6 +139,7 @@ class Sum1 extends Phaser.Scene {
             'txt1',
         )
         //this.txt1.setScale(1.5);
+
         this.textObject = this.add.text(580,440,"tap");
         this.input.on('pointerdown', () => this.scene.start('level2'));
     }
@@ -211,8 +218,8 @@ class Level2 extends Phaser.Scene {
         this.star.setImmovable(true);
         this.star.body.allowGravity = false;
 
-        this.textObject = this.add.text(580,440,"tap");
-        this.input.on('pointerdown', () => this.scene.start('sum2'));
+        // this.textObject = this.add.text(580,440,"tap");
+        // this.input.on('pointerdown', () => this.scene.start('sum2'));
     }
     update() {
         const { left, right, up } = this.cursors;
@@ -253,8 +260,14 @@ class Sum2 extends Phaser.Scene {
         this.load.path = './assets/';
         this.load.image('font2', 'f2.png');
         this.load.image('txt2', 'sum2txt.png')
+        this.load.image('bckgrnd', 'bckgrnd.png')
     }
     create() {
+        this.b = this.add.image(
+            320,
+            240,
+            'bckgrnd',
+        )
         this.font2 = this.add.image(
             320,
             120,
@@ -353,8 +366,8 @@ class Level3 extends Phaser.Scene {
         this.star.setImmovable(true);
         this.star.body.allowGravity = false;
 
-        this.textObject = this.add.text(580,440,"tap");
-        this.input.on('pointerdown', () => this.scene.start('sum3'));
+        // this.textObject = this.add.text(580,440,"tap");
+        // this.input.on('pointerdown', () => this.scene.start('sum3'));
     }
 
     update() {
@@ -396,8 +409,14 @@ class Sum3 extends Phaser.Scene {
         this.load.path = './assets/';
         this.load.image('font3', 'f3.png');
         this.load.image('txt3', 'sum3txt.png')
+        this.load.image('bckgrnd', 'bckgrnd.png')
     }
     create() {
+        this.b = this.add.image(
+            320,
+            240,
+            'bckgrnd',
+        )
         this.font3 = this.add.image(
             320,
             120,
@@ -422,8 +441,14 @@ class Outro extends Phaser.Scene {
     preload(){
         this.load.path = './assets/';
         this.load.image('end', 'end.png');
+        this.load.image('bckgrnd', 'bckgrnd.png')
     }
     create() {
+        this.b = this.add.image(
+            320,
+            240,
+            'bckgrnd',
+        )
         this.start = this.add.image(318,230,'end');
         this.start.setScale(1.5);
         this.textObject = this.add.text(540,440,"restart");
@@ -438,7 +463,7 @@ let config = {
     physics: {
         default: 'arcade',
         arcade: {
-            debug: true,
+            debug: false,
             gravity: {
                 y: 600
             }
