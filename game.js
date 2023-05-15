@@ -72,7 +72,7 @@ class Level1 extends Phaser.Scene {
 
 
         this.textObject = this.add.text(580,440,"tap");
-        this.input.on('pointerdown', () => this.scene.start('level2'));
+        this.input.on('pointerdown', () => this.scene.start('sum1'));
         
     }
     update() {
@@ -113,9 +113,16 @@ class Sum1 extends Phaser.Scene {
         super('sum1')
     }
     preload(){
-
+        this.load.path = './assets/';
+        this.load.image('font1', 'font.png');
     }
     create() {
+        this.font1 = this.add.image(
+            320,
+            90,
+            'font1',
+        )
+        this.font1.setScale(0.8);
         this.textObject = this.add.text(580,440,"tap");
         this.input.on('pointerdown', () => this.scene.start('level2'));
     }
@@ -195,7 +202,7 @@ class Level2 extends Phaser.Scene {
         this.star.body.allowGravity = false;
 
         this.textObject = this.add.text(580,440,"tap");
-        this.input.on('pointerdown', () => this.scene.start('level3'));
+        this.input.on('pointerdown', () => this.scene.start('sum2'));
     }
     update() {
         const { left, right, up } = this.cursors;
@@ -233,10 +240,15 @@ class Sum2 extends Phaser.Scene {
         super('sum2')
     }
     preload(){
-
+        this.load.path = './assets/';
+        this.load.image('font2', 'font2.png');
     }
     create() {
-    
+        this.font2 = this.add.image(
+            320,
+            420,
+            'font2',
+        )
         this.textObject = this.add.text(580,440,"tap");
         this.input.on('pointerdown', () => this.scene.start('level3'));
     }
@@ -323,6 +335,9 @@ class Level3 extends Phaser.Scene {
 
         this.star.setImmovable(true);
         this.star.body.allowGravity = false;
+
+        this.textObject = this.add.text(580,440,"tap");
+        this.input.on('pointerdown', () => this.scene.start('sum3'));
     }
 
     update() {
@@ -361,11 +376,17 @@ class Sum3 extends Phaser.Scene {
         super('sum3')
     }
     preload(){
-
+        this.load.path = './assets/';
+        this.load.image('font3', 'font3.png');
     }
     create() {
+        this.font3 = this.add.image(
+            320,
+            420,
+            'font3',
+        )
         this.textObject = this.add.text(580,440,"restart");
-        this.input.on('pointerdown', () => this.scene.start('intro'));
+        this.input.on('pointerdown', () => this.scene.start('outro'));
     }
 }
 
