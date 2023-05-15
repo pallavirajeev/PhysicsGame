@@ -114,7 +114,7 @@ class Sum1 extends Phaser.Scene {
     }
     preload(){
         this.load.path = './assets/';
-        this.load.image('font1', 'font.png');
+        this.load.image('font1', 'f1.png');
     }
     create() {
         this.font1 = this.add.image(
@@ -122,7 +122,7 @@ class Sum1 extends Phaser.Scene {
             90,
             'font1',
         )
-        this.font1.setScale(0.8);
+        this.font1.setScale(1.3);
         this.textObject = this.add.text(580,440,"tap");
         this.input.on('pointerdown', () => this.scene.start('level2'));
     }
@@ -241,7 +241,7 @@ class Sum2 extends Phaser.Scene {
     }
     preload(){
         this.load.path = './assets/';
-        this.load.image('font2', 'font2.png');
+        this.load.image('font2', 'f2.png');
     }
     create() {
         this.font2 = this.add.image(
@@ -249,7 +249,7 @@ class Sum2 extends Phaser.Scene {
             90,
             'font2',
         )
-        this.font2.setScale(0.8);
+        this.font2.setScale(1.3);
         this.textObject = this.add.text(580,440,"tap");
         this.input.on('pointerdown', () => this.scene.start('level3'));
     }
@@ -378,7 +378,7 @@ class Sum3 extends Phaser.Scene {
     }
     preload(){
         this.load.path = './assets/';
-        this.load.image('font3', 'font3.png');
+        this.load.image('font3', 'f3.png');
     }
     create() {
         this.font3 = this.add.image(
@@ -386,7 +386,7 @@ class Sum3 extends Phaser.Scene {
             90,
             'font3',
         )
-        this.font3.setScale(0.8);
+        this.font3.setScale(1.3);
         this.textObject = this.add.text(580,440,"restart");
         this.input.on('pointerdown', () => this.scene.start('outro'));
     }
@@ -409,7 +409,7 @@ let config = {
     type: Phaser.WEBGL,
     width: 640,
     height: 480,
-    backgroundColor: 0x9CCFE7,
+    //backgroundColor: 0x9CCFE7,
     physics: {
         default: 'arcade',
         arcade: {
