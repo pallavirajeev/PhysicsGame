@@ -246,9 +246,10 @@ class Sum2 extends Phaser.Scene {
     create() {
         this.font2 = this.add.image(
             320,
-            420,
+            90,
             'font2',
         )
+        this.font2.setScale(0.8);
         this.textObject = this.add.text(580,440,"tap");
         this.input.on('pointerdown', () => this.scene.start('level3'));
     }
@@ -382,9 +383,10 @@ class Sum3 extends Phaser.Scene {
     create() {
         this.font3 = this.add.image(
             320,
-            420,
+            90,
             'font3',
         )
+        this.font3.setScale(0.8);
         this.textObject = this.add.text(580,440,"restart");
         this.input.on('pointerdown', () => this.scene.start('outro'));
     }
@@ -407,6 +409,7 @@ let config = {
     type: Phaser.WEBGL,
     width: 640,
     height: 480,
+    backgroundColor: 0x9CCFE7,
     physics: {
         default: 'arcade',
         arcade: {
