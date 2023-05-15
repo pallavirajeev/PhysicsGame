@@ -3,9 +3,12 @@ class Intro extends Phaser.Scene {
         super('intro')
     }
     preload(){
-
+        this.load.path = './assets/';
+        this.load.image('start', 'start.png');
     }
     create() {
+        this.start = this.add.image(318,230,'start');
+        this.start.setScale(1.5);
         this.textObject = this.add.text(580,440,"tap");
         this.input.on('pointerdown', () => this.scene.start('level1'));
     }
@@ -102,7 +105,7 @@ class Level1 extends Phaser.Scene {
         }
 
         this.physics.world.collide(this.player, this.star, function(){
-            game.scene.start('level2');
+            game.scene.start('sum1');
             });
 
     }
@@ -236,7 +239,7 @@ class Level2 extends Phaser.Scene {
         }
 
         this.physics.world.collide(this.player, this.star, function(){
-            game.scene.start('level3');
+            game.scene.start('sum2');
             });
     }
 }
@@ -406,7 +409,7 @@ class Sum3 extends Phaser.Scene {
             290,
             'txt3',
         )
-        this.textObject = this.add.text(560,440,"restart");
+        this.textObject = this.add.text(580,440,"tap");
         this.input.on('pointerdown', () => this.scene.start('outro'));
     }
 }
@@ -417,10 +420,14 @@ class Outro extends Phaser.Scene {
         super('outro')
     }
     preload(){
-
+        this.load.path = './assets/';
+        this.load.image('end', 'end.png');
     }
     create() {
-
+        this.start = this.add.image(318,230,'end');
+        this.start.setScale(1.5);
+        this.textObject = this.add.text(540,440,"restart");
+        this.input.on('pointerdown', () => this.scene.start('intro'));
     }
 }
 
@@ -428,7 +435,6 @@ let config = {
     type: Phaser.WEBGL,
     width: 640,
     height: 480,
-    //backgroundColor: 0x9CCFE7,
     physics: {
         default: 'arcade',
         arcade: {
