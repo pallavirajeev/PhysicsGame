@@ -107,6 +107,21 @@ class Level1 extends Phaser.Scene {
 
     }
 }
+
+class Sum1 extends Phaser.Scene {
+    constructor() {
+        super('sum1')
+    }
+    preload(){
+
+    }
+    create() {
+        this.textObject = this.add.text(580,440,"tap");
+        this.input.on('pointerdown', () => this.scene.start('level2'));
+    }
+}
+
+
 class Level2 extends Phaser.Scene {
     constructor() {
         super('level2')
@@ -211,6 +226,23 @@ class Level2 extends Phaser.Scene {
             });
     }
 }
+
+
+class Sum2 extends Phaser.Scene {
+    constructor() {
+        super('sum2')
+    }
+    preload(){
+
+    }
+    create() {
+    
+        this.textObject = this.add.text(580,440,"tap");
+        this.input.on('pointerdown', () => this.scene.start('level3'));
+    }
+}
+
+
 class Level3 extends Phaser.Scene {
     constructor() {
         super('level3')
@@ -322,6 +354,22 @@ class Level3 extends Phaser.Scene {
             });
     }
 }
+
+
+class Sum3 extends Phaser.Scene {
+    constructor() {
+        super('sum3')
+    }
+    preload(){
+
+    }
+    create() {
+        this.textObject = this.add.text(580,440,"restart");
+        this.input.on('pointerdown', () => this.scene.start('intro'));
+    }
+}
+
+
 class Outro extends Phaser.Scene {
     constructor() {
         super('outro')
@@ -347,7 +395,7 @@ let config = {
             }
         }
     },
-    scene: [Intro, Level1, Level2, Level3, Outro]
+    scene: [Intro, Level1, Sum1, Level2, Sum2, Level3, Sum3, Outro]
 };
 
 let game = new Phaser.Game(config);
