@@ -115,14 +115,21 @@ class Sum1 extends Phaser.Scene {
     preload(){
         this.load.path = './assets/';
         this.load.image('font1', 'f1.png');
+        this.load.image('txt1','sum1txt.png')
     }
     create() {
         this.font1 = this.add.image(
             320,
-            90,
+            120,
             'font1',
         )
-        this.font1.setScale(1.3);
+        this.font1.setScale(1.5);
+        this.txt1 = this.add.image(
+            320,
+            290,
+            'txt1',
+        )
+        //this.txt1.setScale(1.5);
         this.textObject = this.add.text(580,440,"tap");
         this.input.on('pointerdown', () => this.scene.start('level2'));
     }
@@ -242,14 +249,20 @@ class Sum2 extends Phaser.Scene {
     preload(){
         this.load.path = './assets/';
         this.load.image('font2', 'f2.png');
+        this.load.image('txt2', 'sum2txt.png')
     }
     create() {
         this.font2 = this.add.image(
             320,
-            90,
+            120,
             'font2',
         )
-        this.font2.setScale(1.3);
+        this.font2.setScale(1.5);
+        this.txt1 = this.add.image(
+            320,
+            290,
+            'txt2',
+        )
         this.textObject = this.add.text(580,440,"tap");
         this.input.on('pointerdown', () => this.scene.start('level3'));
     }
@@ -379,15 +392,21 @@ class Sum3 extends Phaser.Scene {
     preload(){
         this.load.path = './assets/';
         this.load.image('font3', 'f3.png');
+        this.load.image('txt3', 'sum3txt.png')
     }
     create() {
         this.font3 = this.add.image(
             320,
-            90,
+            120,
             'font3',
         )
-        this.font3.setScale(1.3);
-        this.textObject = this.add.text(580,440,"restart");
+        this.font3.setScale(1.5);
+        this.txt3 = this.add.image(
+            320,
+            290,
+            'txt3',
+        )
+        this.textObject = this.add.text(560,440,"restart");
         this.input.on('pointerdown', () => this.scene.start('outro'));
     }
 }
