@@ -17,6 +17,7 @@ class Level1 extends Phaser.Scene {
     preload(){
         this.load.path = './assets/';
         this.load.image('level1', 'level1.png');
+        this.load.image('cat', 'cat.png');
     }
     create() {
         this.imageObject = this.add.image(
@@ -25,6 +26,12 @@ class Level1 extends Phaser.Scene {
             'level1',//imagename
         )
         this.star = this.add.text(590,310,"⭐");
+        this.player = this.add.image(
+            100,
+            310,
+            'cat',
+        )
+        this.player.setScale(0.2);
     }
 }
 class Level2 extends Phaser.Scene {
