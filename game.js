@@ -451,8 +451,8 @@ class Outro extends Phaser.Scene {
         )
         this.start = this.add.image(318,230,'end');
         this.start.setScale(1.5);
-        this.textObject = this.add.text(540,440,"restart");
-        this.input.on('pointerdown', () => this.scene.start('intro'));
+        // this.textObject = this.add.text(540,440,"restart");
+        // this.input.on('pointerdown', () => this.scene.start('level1'));
     }
 }
 
