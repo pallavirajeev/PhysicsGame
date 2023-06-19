@@ -6,7 +6,6 @@
         Phaser physics arcade. There is no other way of moving to the next level, unless the player is moved with the arrow keys to move over the platform(s) and collide with the star.
     - There are three levels to the game, each with a more complicated task (an extra platform to jump
         over). 
-    - These levels are each separated with a summary scene which tells you how many platforms you jumped 
-        over and a "tease" of how many platforms you will jump over in the next level.
+    - These levels are each separated with a summary scene indicating you completed the level.
 - How Assets were Created:
-    - All art/assets was created by myself, hand-drawn on pixilart.com.
+    - All art/assets was created by myself, hand-drawn on pixilart.com and Procreate 
